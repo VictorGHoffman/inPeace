@@ -1,6 +1,4 @@
-<?php
-
-use database as GlobalDatabase;
+<?php 
 
 function console_log($valor){
     if(is_array($valor)){
@@ -11,7 +9,13 @@ function console_log($valor){
     }
     
 }
-
+function data($valor){
+    $valor = strtotime($valor);
+    return date("d/m/Y",$valor);
+}
+function redirect($valor){
+    header("Location:".$valor);
+}
 class database{
 
     function query($q){
@@ -30,11 +34,10 @@ class database{
     function num_rows($q){
         return mysqli_num_rows($q);
     }
-    function ChangeDB($n_db){
-        return $this->connect = $n_db;
-    }
 }
 $database = new database();
+
+
 
 ?>
 

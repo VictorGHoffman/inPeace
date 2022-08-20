@@ -1,21 +1,37 @@
 <?php 
 include_once "./base/inicializa.php";
-$request = file_get_contents("https://servicodados.ibge.gov.br/api/v1/localidades/estados/ES/municipios");
-$request = json_decode($request,true);
+include_once "./includes/header.php";
 
-echo $request[0]['microrregiao'];
-var_dump($request);
+$q = $database->query("SELECT m.*, i.nome as igreja FROM membros m JOIN igrejas i ON i.id = m.pertence_igreja");
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud Igrejas</title>
-</head>
-<body>
-    
-</body>
-</html>
+<link rel="stylesheet" href="./css/style.css">
+
+
+<a href="./pages/cad_igreja.php"><button>Cadastrar Igreja</button></a>
+<a href="./pages/cad_membro.php"><button>Cadastrar Membro</button></a>
+
+<div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Igreja</th>
+        </tr>
+        <?php 
+        while($result = $database->fetch_object($q)){
+            echo "
+            <tr>
+                <td><a href=\"./pages/perfil.php?i=$result->id\">$result->nome</a></td>
+                <td>$result->cpf</td>
+                <td>$result->email</td>
+                <td>$result->igreja</td>
+            </tr>";
+        }?>
+    </table>
+</div>
+
+<?php 
+include_once "./includes/footer.php";
+?>
