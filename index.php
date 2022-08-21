@@ -7,10 +7,7 @@ $q = $database->query("SELECT m.*, i.nome as igreja FROM membros m JOIN igrejas 
 ?>
 <link rel="stylesheet" href="./css/style.css">
 <div class="center">    
-    <div style="display:flex">
-        <a class="btn"href="./pages/cad_igreja.php">Cadastrar Igreja</a>
-        <a class="btn"href="./pages/cad_membro.php">Cadastrar Membro</a>
-    </div>
+    
     <div>
         <table class="form_table">
             <tr>
@@ -30,6 +27,10 @@ $q = $database->query("SELECT m.*, i.nome as igreja FROM membros m JOIN igrejas 
                 </tr>";
             }?>
         </table>
+    </div>
+    <div style="display:flex">
+        <a class="btn"href="./pages/cad_igreja.php">Cadastrar Igreja</a>
+        <a class="btn"href="./pages/cad_membro.php">Cadastrar Membro</a>
     </div>
 </div>
 
