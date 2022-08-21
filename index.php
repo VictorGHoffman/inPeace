@@ -6,30 +6,31 @@ $q = $database->query("SELECT m.*, i.nome as igreja FROM membros m JOIN igrejas 
 
 ?>
 <link rel="stylesheet" href="./css/style.css">
-
-
-<a href="./pages/cad_igreja.php"><button>Cadastrar Igreja</button></a>
-<a href="./pages/cad_membro.php"><button>Cadastrar Membro</button></a>
-
-<div>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Email</th>
-            <th>Igreja</th>
-        </tr>
-        <?php 
-        while($result = $database->fetch_object($q)){
-            echo "
+<div class="center">    
+    <div style="display:flex">
+        <a class="btn"href="./pages/cad_igreja.php">Cadastrar Igreja</a>
+        <a class="btn"href="./pages/cad_membro.php">Cadastrar Membro</a>
+    </div>
+    <div>
+        <table class="form_table">
             <tr>
-                <td><a href=\"./pages/perfil.php?i=$result->id\">$result->nome</a></td>
-                <td>$result->cpf</td>
-                <td>$result->email</td>
-                <td>$result->igreja</td>
-            </tr>";
-        }?>
-    </table>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Igreja</th>
+            </tr>
+            <?php 
+            while($result = $database->fetch_object($q)){
+                echo "
+                <tr>
+                    <td><a href=\"./pages/perfil.php?i=$result->id\">$result->nome</a></td>
+                    <td>$result->cpf</td>
+                    <td>$result->email</td>
+                    <td>$result->igreja</td>
+                </tr>";
+            }?>
+        </table>
+    </div>
 </div>
 
 <?php 

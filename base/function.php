@@ -37,6 +37,9 @@ class database{
 }
 $database = new database();
 
+function comunica_api($url){
+    return json_decode(file_get_contents($url),true);
+}
 
 
 ?>

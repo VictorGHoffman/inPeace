@@ -1,15 +1,18 @@
 <?php 
 session_start();
 include_once "../base/inicializa.php";
-include_once "../api/api_connect.php";
 include_once "../includes/header.php";
+
+$estados = comunica_api("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
 
 $q_igreja = $database->query("SELECT id, nome FROM igrejas");
 
 ?>
+<script src="../js/city.js"></script>
 <link rel="stylesheet" href="../css/style.css">
-<a href="../index.php"><button>Voltar</button></a>
+
 <div class="form_cad">
+    <a class="btn" style="width:40px" href="../index.php">Voltar</a>
     <form action="../php_action/member_register.php" method="POST">
         <label for="nome">Nome: </label>
         <input id="nome" name="nome" type="text" value="">
@@ -18,7 +21,7 @@ $q_igreja = $database->query("SELECT id, nome FROM igrejas");
         <input id="cpf" name="cpf" type="text" value="">
 
         <label for="nascimento">Data de Nascimento: </label>
-        <input id="nascimento" name="nascimento" type="date" value="">
+        <input style="margin:auto; width:100%" id="nascimento" name="nascimento" type="date" value="">
         
         <label for="email">Email: </label>
         <input id="email" name="email" type="text" value="">
@@ -30,11 +33,11 @@ $q_igreja = $database->query("SELECT id, nome FROM igrejas");
         <input id="logradouro" name="logradouro" type="text" value="">
 
         <label for="estado">Estado: </label>
-        <select name="estado" id="estado">
+        <select onchange="getEstado()" name="estado" id="estado">
             <option selected disabled value="0">Selecione um estado</option>
             <?php 
             foreach($estados as $estado){
-                echo '<option value="' . $estado['id'] . '">' . $estado['nome'] . '</option>';
+                echo '<option value="'.$estado['id'].'">'.$estado['nome'].'</option>';
             }
             ?>
         </select>
@@ -53,10 +56,10 @@ $q_igreja = $database->query("SELECT id, nome FROM igrejas");
             }
             ?>
         </select>
-        <input type="submit" id="btn_member" name="btn_member" value="Cadastrar Membro">
+        <input style="margin:20px 0px" class="btn" type="submit" id="btn_member" name="btn_member" value="Cadastrar Membro">
     </form>
     
-    <div style="color:red">
+    <div id="error" style="color:red">
         <?php 
             if(isset($_SESSION['error'])){
                 echo $_SESSION['error'];

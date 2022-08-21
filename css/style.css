@@ -2,7 +2,85 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
 }
+
+.form_cad{
+    display:grid;
+    justify-content: center;
+}
+.form_cad div a{
+    margin:10px;
+}
 .form_cad input,select{
     display:block;
+    border: 1px solid;
+    border-radius:5px;
+    width:100%;
+}
+textarea{
+    border:none;
+    resize:none;
+    color:black;
+    background-color: white;
 }
 
+.btn{
+    margin:10px 3px;
+    border:none !important;
+    border-radius:5px;
+    padding:10px;
+    background-color: rgb(12 97 157);
+    color:white;
+    box-shadow: 2px 2px 4px black;
+}
+.btn:hover{
+    cursor:pointer;
+    background-color: rgb(9, 77, 126);
+    color:white;
+}
+
+.btn:active{
+    transform: translate(1px,2px);
+    box-shadow: 2px 2px 3px black;
+    background: rgb(8, 66, 107);
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+select{
+    width:100%;
+}
+.center{
+    display:grid;
+    margin: 10% 0px;
+    justify-content: center;
+}
+.form_table{
+    /* border: 1px solid; */
+    border-collapse: collapse;
+    text-align: center;
+}
+.form_table textarea{
+    text-align: center;
+    background-color: lightgrey;
+}
+.form_table tr:nth-child(even){
+    background-color: lightgrey;
+}
+.form_table tr:nth-child(odd){
+    background-color: rgb(245, 245, 245);
+}
+.form_table td{
+    padding: 5px;
+}
+.delete{
+    background-color: rgb(190, 20, 20);
+}
+.delete:hover{
+    background-color: rgb(158, 22, 22);
+}
+.delete:active{
+    background-color: rgb(133, 18, 18);
+}

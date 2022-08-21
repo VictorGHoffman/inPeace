@@ -5,4 +5,5 @@ if(isset($_POST['delete'])){
     $q = $database->query("DELETE FROM membros WHERE id = '$id'");
     redirect("../index.php");
 }
+redirect("../index.php");
 ?>
