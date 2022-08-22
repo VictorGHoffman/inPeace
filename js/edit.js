@@ -3,6 +3,7 @@ function edit_element(elemento){
         elemento.prop('disabled',false);
         elemento.css('border','solid 1px');
         elemento.css('border-radius','5px');
+        return elemento.val();
     }else{
         elemento.prop('disabled',true);
         elemento.css('border','none');
@@ -17,12 +18,17 @@ function edit(id) {
     const data = $('#area_data');
     const tel = $('#area_tel');
     const log = $('#area_log');
+    const cidade = $('#area_cidade');
+    const estado = $('#area_estado');
 
-    let n_nome = $.trim(edit_element(nome));
-    var n_cpf = edit_element(cpf);
-    var n_email = edit_element(email);
-    var n_data = edit_element(data);
-    var n_tel = edit_element(tel);
-    var n_log = edit_element(log);
-    $.post('../php_action/update.php',{id:id, nome:n_nome, cpf:n_cpf, email:n_email, data:n_data, tel:n_tel, log:n_log});
+    const n_nome = $.trim(edit_element(nome));
+    const n_cpf = edit_element(cpf);
+    const n_email = edit_element(email);
+    const n_data = edit_element(data);
+    const n_tel = edit_element(tel);
+    const n_log = edit_element(log);
+    const n_cidade = edit_element(cidade);
+    const n_estado = edit_element(estado);
+
+    $.post('../php_action/update.php',{id:id, nome:n_nome, cpf:n_cpf, email:n_email, data:n_data, tel:n_tel, log:n_log, cidade:n_cidade, estado:n_estado});
 }

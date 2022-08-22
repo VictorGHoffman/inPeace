@@ -23,7 +23,7 @@ if(isset($_POST['btn_member'])){
 
     $q = $database->query("SELECT cpf FROM membros WHERE cpf = '$cpf'");
     if($database->num_rows($q)){
-        $error = "Membro já cadastrado!";
+        $error = "CPF já cadastrado!";
         $_SESSION['error'] = $error;
         redirect('../pages/cad_membro.php');
     }elseif(!$igreja){

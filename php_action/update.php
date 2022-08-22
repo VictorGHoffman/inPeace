@@ -1,7 +1,7 @@
 <?php
 include_once "../base/inicializa.php";
 
-if(isset($_POST['id'])){
+if(isset($_POST['nome'])){
     $data = str_replace('/','-',$_POST['data']);
     echo $data;
     $id = $_POST['id'];
@@ -11,7 +11,10 @@ if(isset($_POST['id'])){
     $nascimento = date('Y-m-d',strtotime($data));
     $tel = $_POST['tel'];
     $log = $_POST['log'];
-    $database->query("UPDATE membros SET nome = '$nome', cpf = '$cpf', nascimento = '$nascimento', email = '$email', telefone = '$tel', logradouro = '$log' WHERE id ='$id'");
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    
+    $database->query("UPDATE membros SET nome = '$nome', cpf = '$cpf', nascimento = '$nascimento', email = '$email', telefone = '$tel', logradouro = '$log', cidade = '$cidade', estado = '$estado' WHERE id ='$id'");
 
 }
 
